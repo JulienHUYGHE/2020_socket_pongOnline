@@ -1,0 +1,2 @@
+build*
+VICCI/VICCI.pro.user*
