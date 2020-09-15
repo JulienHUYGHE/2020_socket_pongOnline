@@ -36,15 +36,15 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(1241, 700);
+        MainWindow->resize(1241, 1229);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         openGLWidget = new QOpenGLWidget(centralwidget);
         openGLWidget->setObjectName(QString::fromUtf8("openGLWidget"));
-        openGLWidget->setGeometry(QRect(100, 20, 1001, 1001));
+        openGLWidget->setGeometry(QRect(100, 20, 1001, 641));
         barreJoueur1 = new QFrame(centralwidget);
         barreJoueur1->setObjectName(QString::fromUtf8("barreJoueur1"));
-        barreJoueur1->setGeometry(QRect(100, 260, 31, 131));
+        barreJoueur1->setGeometry(QRect(120, 260, 31, 131));
         barreJoueur1->setFrameShape(QFrame::VLine);
         barreJoueur1->setFrameShadow(QFrame::Sunken);
         balle = new QGraphicsView(centralwidget);

@@ -28,8 +28,8 @@ void setCoordoneesBarreJ2(int value);
 
 private:
 Ui::MainWindow *ui;
-int coordoneesBarreJ1 = 500;
-int coordoneesBarreJ2 = 500;
+int coordoneesBarreJ1 = 255;
+int coordoneesBarreJ2 = 255;
 
 protected:
 
