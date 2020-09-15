@@ -26,10 +26,21 @@ void setCoordoneesBarreJ1(int value);
 int getCoordoneesBarreJ2() ;
 void setCoordoneesBarreJ2(int value);
 
+int getYBalle() ;
+void setYBalle(int value);
+
+int getXBalle() ;
+void setXBalle(int value);
+
+int deplacerBalle(bool commence);
+
 private:
 Ui::MainWindow *ui;
 int coordoneesBarreJ1 = 255;
 int coordoneesBarreJ2 = 255;
+
+int YBalle = 500;
+int XBalle = 500;
 
 protected:
 
