@@ -34,6 +34,8 @@ void setXBalle(int value);
 
 int deplacerBalle(bool commence);
 
+bool match();
+
 private:
 Ui::MainWindow *ui;
 int coordoneesBarreJ1 = 255;

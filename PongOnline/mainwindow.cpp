@@ -115,27 +115,39 @@ void MainWindow::keyReleaseEvent(QKeyEvent *e)
 
 }
 
+bool MainWindow::match()
+{
+
+
+   while(deplacerBalle(true) != 1)
+   {
+
+       return false;
+   }
+   return true;
+
+
+}
 int MainWindow:: deplacerBalle(bool commence)
 {
     if (commence)
     {
         std::cout<<"test"<<std::endl;
-      while (XBalle != coordoneesBarreJ1 ||  coordoneesBarreJ2 && YBalle != coordoneesBarreJ1 || coordoneesBarreJ1)
+      while (XBalle != coordoneesBarreJ1 ||  coordoneesBarreJ2 || YBalle != coordoneesBarreJ1 || coordoneesBarreJ1)
         {
-          for(int i =0; i<1; i++)
-          {
+
              std::cout<<"test"<<std::endl;
             setXBalle(getXBalle() + 10);
             ui->balle->move(getXBalle() , 300);
              return getXBalle();
-          }
+
 
 
         }
     }
     else
     {
-        while (XBalle != coordoneesBarreJ1 ||  coordoneesBarreJ2 && YBalle != coordoneesBarreJ1 || coordoneesBarreJ1)
+        while (XBalle != coordoneesBarreJ1 ||  coordoneesBarreJ2 || YBalle != coordoneesBarreJ1 || coordoneesBarreJ1)
         {
             setXBalle(getXBalle() - 10);
             ui->balle->move(getXBalle() , 300);
@@ -144,6 +156,13 @@ int MainWindow:: deplacerBalle(bool commence)
         }
     }
 
-   return 1;
+    if( XBalle == coordoneesBarreJ1 || coordoneesBarreJ2 || YBalle == coordoneesBarreJ1 || coordoneesBarreJ2)
+    {
+        return 1;
+    }
+    else
+        return 0;
+
+
 }
 
