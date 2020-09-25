@@ -32,7 +32,7 @@ void setYBalle(int value);
 int getXBalle() ;
 void setXBalle(int value);
 
-int deplacerBalle(bool commence);
+void deplacerBalle(bool commence);
 
 bool match();
 
