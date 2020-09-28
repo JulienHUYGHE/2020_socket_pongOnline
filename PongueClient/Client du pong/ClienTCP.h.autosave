@@ -1,0 +1,27 @@
+#define CLIENTTCP_H
+#define CLIENTTCP_H
+#include <QtNetwork>
+#include <QObject>
+
+
+class ClientTCP : public QObject
+{
+
+Q_OBJECT
+
+private slots:
+
+    void RecevoirInfo();
+    void afficherErreur( QAbstractSocket::SocketError socketError);
+
+private :
+    QTcpSocket *m_tcpSocket;
+    quint16 m_blockSize;
+    QNetworkSession *m_networkSession;
+
+public:
+    ClientTCP();
+    void EnvoyerInfoBarre(int pos_Y);
+    void EnvoyerInfoBalle(int pos_X, int pos_Y);
+
+};
