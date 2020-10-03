@@ -4,18 +4,22 @@
 #include <QKeyEvent>
 #include "iostream"
 #include <QTimer>
+#include "define.h"
+
 
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
     ,m_allerADroite(true)
+    ,m_player(NULL)
 {
     ui->setupUi(this);
     ui->barreJoueur1->setFocus();
 }
 
 MainWindow::~MainWindow()
+#include <QTimer>
 {
     delete ui;
 }
@@ -30,6 +34,7 @@ int MainWindow::descendreBarreJ1()
 {
     setCoordoneesBarreJ1(getCoordoneesBarreJ1()+10);
     ui->barreJoueur1->move(120,getCoordoneesBarreJ1());
+
     return getCoordoneesBarreJ1();
 
 }
@@ -137,7 +142,7 @@ void MainWindow:: deplacerBalle()
                 setXBalle(getXBalle() + 10);
             else
                 setXBalle(getXBalle() - 10);
-            std::cout<<"GNEGNE=" <<XBalle <<std::endl;
+
             ui->balle->move(getXBalle() , 300);
 
     }
@@ -156,19 +161,25 @@ void MainWindow:: deplacerBalle()
 
 
 
-        std::cout<<"GNEGNE=" <<XBalle <<std::endl;
-        ui->balle->move(getXBalle() , 300);
-        if(getYBalle()> coordoneesBarreJ1 || getYBalle() < coordoneesBarreJ2)
+        if (getXBalle() == coordoneesBarreJ1 || getXBalle() == coordoneesBarreJ2)
         {
+            jouerMusique("PEW.wav");
+        }
+
+
+        ui->balle->move(getXBalle() , 300);
+        if(getYBalle()> coordoneesBarreJ1 || getYBalle() > coordoneesBarreJ2)
+        {
+                ui->balle->move(600 , 300);
             m_timer->stop();
-            setXBalle(500);
-            if( getYBalle() > coordoneesBarreJ1)
+
+            if( getYBalle() != coordoneesBarreJ2)
             {
-                ui->Ecran->setText("Le gagnant est joueur 2 !");
+                ui->Ecran->setText("\t\t\t\t\t\t\tLe gagnant est joueur 2 !");
             }
-            if(getYBalle() < coordoneesBarreJ2)
+            if(getYBalle() != coordoneesBarreJ1)
             {
-                ui->Ecran->setText("Le gagnant est joueur 1 !");
+                ui->Ecran->setText("\t\t\t\t\t\t\tLe gagnant est joueur 1 !");
             }
         }
     }
@@ -197,6 +208,7 @@ void MainWindow::on_pushButton_clicked()
     setXBalle(300);
     deplacerBalle();
     timer();
+jouerMusique("tetris.mp3");
 }
 
 
@@ -206,5 +218,20 @@ void MainWindow::on_pushButton_clicked()
 bool MainWindow::match()
 {
     return true;
+}
+
+void MainWindow::jouerMusique(QString s)
+{
+    m_player = new QMediaPlayer;
+
+    // mettre le chemin de votre dossier musique
+    // s.prepend("/Users/bapti/Desktop/Musique/");
+    s.prepend(CHEMIN_MUSIQUE);
+
+    std::cout << QUrl::fromLocalFile(s).toString().toStdString() << std::endl;
+
+    m_player->setMedia(QUrl::fromLocalFile( s));
+    m_player->setVolume(50);
+    m_player->play();
 }
 
