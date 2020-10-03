@@ -161,9 +161,9 @@ void MainWindow:: deplacerBalle()
 
 
 
-        if (getXBalle() == coordoneesBarreJ1 || getXBalle() == coordoneesBarreJ2)
+        if (getXBalle() == coordoneesBarreJ1 || getXBalle() == coordoneesBarreJ2 || getYBalle() == coordoneesBarreJ1 || getYBalle() == coordoneesBarreJ2)
         {
-            jouerMusique("PEW.wav");
+            jouerMusique("Pew.mp3");
         }
 
 
@@ -208,7 +208,8 @@ void MainWindow::on_pushButton_clicked()
     setXBalle(300);
     deplacerBalle();
     timer();
-jouerMusique("tetris.mp3");
+
+// jouerMusique("tetris.mp3");
 }
 
 
@@ -225,13 +226,12 @@ void MainWindow::jouerMusique(QString s)
     m_player = new QMediaPlayer;
 
     // mettre le chemin de votre dossier musique
-    // s.prepend("/Users/bapti/Desktop/Musique/");
     s.prepend(CHEMIN_MUSIQUE);
 
     std::cout << QUrl::fromLocalFile(s).toString().toStdString() << std::endl;
 
     m_player->setMedia(QUrl::fromLocalFile( s));
-    m_player->setVolume(50);
+    m_player->setVolume(500);
     m_player->play();
 }
 
