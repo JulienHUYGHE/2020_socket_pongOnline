@@ -13,9 +13,11 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGraphicsView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QOpenGLWidget>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
@@ -29,6 +31,8 @@ public:
     QFrame *barreJoueur1;
     QGraphicsView *balle;
     QFrame *barreJoueur2;
+    QPushButton *pushButton;
+    QLabel *Ecran;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -55,6 +59,13 @@ public:
         barreJoueur2->setGeometry(QRect(1050, 260, 31, 131));
         barreJoueur2->setFrameShape(QFrame::VLine);
         barreJoueur2->setFrameShadow(QFrame::Sunken);
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(560, 90, 75, 23));
+        Ecran = new QLabel(centralwidget);
+        Ecran->setObjectName(QString::fromUtf8("Ecran"));
+        Ecran->setGeometry(QRect(100, 50, 1001, 31));
+        Ecran->setAutoFillBackground(true);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -72,6 +83,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        pushButton->setText(QApplication::translate("MainWindow", "Jouer", nullptr));
+        Ecran->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\">Appuyez sur le bouton pour commencer</p></body></html>", nullptr));
     } // retranslateUi
 
 };

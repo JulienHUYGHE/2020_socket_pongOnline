@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QTimer>
+#include <QMediaPlayer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -39,6 +40,8 @@ void deplacerBarreGauche();
 
 bool match();
 
+void jouerMusique(QString s);
+
 private slots :
 void  deplacerBalle();
 
@@ -51,6 +54,7 @@ int YBalle = 300;
 int XBalle = 500;
 QTimer *m_timer;
 bool m_allerADroite;
+QMediaPlayer* m_player;
 
 protected:
 
