@@ -206,7 +206,6 @@ void MainWindow::timer()
 void MainWindow::on_pushButton_clicked()
 {
     setXBalle(300);
-   // deplacerBalle();
     timer();
 
 // jouerMusique("tetris.mp3");
